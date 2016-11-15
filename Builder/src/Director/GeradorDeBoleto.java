@@ -27,4 +27,18 @@ public class GeradorDeBoleto {
 		return boleto;
 	}
 	
+	public Boleto geraBoleto2() {
+		this.boletoBuilder.buildSacado("Gustavo Moreira"); 
+		this.boletoBuilder.buildCedente("Itau"); 
+		this.boletoBuilder.buildValor(800.50);
+		Calendar vencimento = Calendar.getInstance(); 
+		vencimento.add(Calendar.DATE, 30); 
+		this.boletoBuilder.buildVencimento(vencimento);
+		this.boletoBuilder.buildNossoNumero(1986487629);
+		this.boletoBuilder.buildPagamentoOnline(false);
+		Boleto boleto2 = boletoBuilder.getBoleto();
+		
+		return boleto2;
+	}
+	
 }

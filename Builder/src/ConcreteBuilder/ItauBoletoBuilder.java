@@ -3,16 +3,17 @@ package ConcreteBuilder;
 import java.util.Calendar;
 
 import Builder.BoletoBuilder;
-import Product.BBBoleto;
 import Product.Boleto;
+import Product.ItauBoleto;
 
-public class BBBoletoBuilder implements BoletoBuilder{
+public class ItauBoletoBuilder implements BoletoBuilder{
 	
 	private String sacado;
 	private String cedente;
 	private double valor;
 	private Calendar vencimento; 
 	private int nossoNumero;
+	private boolean pagamentoOnline;
 	
 	@Override
 	public void buildSacado(String sacado) {
@@ -38,16 +39,14 @@ public class BBBoletoBuilder implements BoletoBuilder{
 	public void buildNossoNumero(int nossoNumero) {
 		this.nossoNumero = nossoNumero;
 	}
-
-	@Override
-	public Boleto getBoleto() {
-		return new BBBoleto(sacado, cedente, valor, vencimento, nossoNumero);
+	
+	public void buildPagamentoOnline(boolean pagamentoOnline) {
+		this.pagamentoOnline = pagamentoOnline;
 	}
 
 	@Override
-	public void buildPagamentoOnline(boolean pagamentoOnline) {
-		// TODO Auto-generated method stub
-		
+	public Boleto getBoleto() {
+		return new ItauBoleto(sacado, cedente, valor, vencimento, nossoNumero, pagamentoOnline);
 	}
 
 }
